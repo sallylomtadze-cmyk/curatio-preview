@@ -1,0 +1,144 @@
+/* shared by the three Curatio concepts */
+/* FiraGO has no Mtavruli glyphs, so Mtavruli text falls through to Noto Sans Georgian */
+@font-face{font-family:FiraGO;font-weight:400;font-display:swap;src:url(fonts/FiraGO-Regular.woff2) format("woff2")}
+@font-face{font-family:FiraGO;font-weight:500;font-display:swap;src:url(fonts/FiraGO-Medium.woff2) format("woff2")}
+@font-face{font-family:FiraGO;font-weight:700;font-display:swap;src:url(fonts/FiraGO-Bold.woff2) format("woff2")}
+@font-face{font-family:FiraGO;font-weight:800;font-display:swap;src:url(fonts/FiraGO-ExtraBold.woff2) format("woff2")}
+@font-face{font-family:FiraGO;font-weight:900;font-display:swap;src:url(fonts/FiraGO-Heavy.woff2) format("woff2")}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:FiraGO,"Noto Sans Georgian",system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body:has(#m:checked){overflow:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none;padding:0}
+.wrap{max-width:1240px;margin:auto;padding:0 28px}
+.grid>*,.hero>*,.two>*{min-width:0}
+.mt{letter-spacing:.03em}
+
+/* floating pill nav; blur sits on a pseudo-element so the fixed mobile menu stays full-screen */
+.nav{max-width:1240px;margin:12px auto 0;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:10px 26px;position:sticky;top:12px;z-index:50}
+.nav::before{content:"";position:absolute;inset:0;border-radius:99px;background:#ffffffe0;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 0 0 1px #12303f14;z-index:-1}
+.nav .logo{position:relative;z-index:61}
+.nav .logo img{height:44px}
+.nav .menu{display:flex;gap:30px;font-size:13px;font-weight:700}
+.nav .tools{display:flex;gap:18px;align-items:center;font-size:23px;position:relative;z-index:61}
+.nav .lang{font-size:12px;font-weight:700}
+.burger{display:none;cursor:pointer;font-size:30px;line-height:1}
+.burger .x{display:none}
+#m{position:absolute;opacity:0;pointer-events:none}
+#m:focus-visible~.tools .burger{outline:2px solid currentColor}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:99px;font-weight:700;font-size:13px;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+
+/* blocks ease in as they scroll into view (Chrome/Edge; elsewhere they just show) */
+@supports (animation-timeline:view()){
+  .rv{animation:rv linear both;animation-timeline:view();animation-range:entry 0% entry 40%}
+  @keyframes rv{from{opacity:0;translate:0 44px}}
+}
+@media(max-width:860px){
+  .wrap{padding:0 18px}
+  .nav{margin:8px 10px 0;padding:8px 18px;top:8px}
+  .nav .logo img{height:36px}
+  .burger{display:block}
+  .nav .hide-m{display:none!important}
+  .nav .menu{position:fixed;inset:0;z-index:60;flex-direction:column;justify-content:center;padding:0 28px;gap:20px;font-size:30px;font-weight:900;transform:translateY(-100%);transition:transform .35s}
+  #m:checked~.menu{transform:none}
+  #m:checked~.tools .o{display:none}
+  #m:checked~.tools .x{display:inline-block}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+
+::selection{background:#12303F;color:#fff}
+.rail,.track,.rc{scrollbar-width:none}
+/* doctor photo card helpers + sticky mobile action bar, shared */
+.mbar{display:none}
+@media(max-width:860px){
+  body{padding-bottom:76px}
+  .mbar{display:grid;grid-template-columns:1fr 1.4fr;gap:8px;position:fixed;left:10px;right:10px;bottom:10px;z-index:40;padding:8px;border-radius:99px;background:#ffffffd9;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 0 0 1px #12303f14}
+  .mbar a{display:flex;justify-content:center;align-items:center;gap:8px;height:46px;border-radius:99px;font-size:13px;font-weight:700}
+  .mbar a:first-child{box-shadow:inset 0 0 0 1.5px var(--ink)}
+  .mbar a:last-child{background:var(--teal);color:#fff}
+}
+/* footer: compact rounded panel; themed through --ft-* */
+.ft{padding:12px}
+.ft .in{background:var(--ft-bg,#163057);color:var(--ft-fg,#fff);border-radius:44px;padding:56px clamp(24px,4.4vw,64px) 0;font-size:15px}
+.ft .top{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap}
+.ft .lbl{font-size:11px;font-weight:700;opacity:.6;margin-bottom:14px;color:inherit}
+.ft h2{font-size:clamp(24px,2.6vw,38px);margin:0}
+.ft .mail{display:inline-flex;align-items:center;gap:16px;padding:8px 8px 8px 24px;border-radius:99px;font-size:16px;font-weight:700;box-shadow:inset 0 0 0 1.5px color-mix(in srgb,currentColor 35%,transparent);transition:.35s}
+.ft .mail i{width:42px;height:42px;border-radius:50%;background:var(--ft-ac,#30B8A8);color:var(--ft-btn,#163057);display:grid;place-items:center;font-size:18px;transition:.35s}
+.ft .mail:hover{background:var(--ft-fg,#fff);color:var(--ft-bg,#163057)}.ft .mail:hover i{rotate:45deg}
+.ft .cols{display:grid;grid-template-columns:1fr 1fr 1.3fr 1.1fr;gap:30px;margin:52px 0 40px}
+.ft li{margin-top:12px}
+.ft li b{font-size:11px;opacity:.6}
+.ft li a{transition:opacity .2s}.ft ul:hover li a{opacity:.5}.ft ul li a:hover{opacity:1}
+.ft .soc a{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-radius:99px;margin-top:8px;font-weight:700;font-size:12px;box-shadow:inset 0 0 0 1px color-mix(in srgb,currentColor 25%,transparent);transition:.3s}
+.ft .soc a:hover{background:var(--ft-ac,#30B8A8);color:var(--ft-btn,#163057)}
+.ft .soc i{font-size:20px}
+.ft .bot{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 0;border-top:1px solid color-mix(in srgb,currentColor 16%,transparent);font-size:13px}
+.ft .up{display:inline-flex;gap:8px;align-items:center;font-weight:700}
+.ft .wm{height:34px;filter:var(--ft-wm,brightness(0) invert(1))}
+@media(max-width:860px){.ft{padding:8px}.ft .in{border-radius:32px;padding-top:40px}.ft .cols{grid-template-columns:1fr 1fr;margin:36px 0 26px}.ft .mail{width:100%;justify-content:space-between}}
+/* refinements shared by all three */
+h1,h2,h3{letter-spacing:.005em}
+.lbl:before{content:"";display:inline-block;width:7px;height:7px;background:var(--mint);rotate:45deg;margin-right:9px;vertical-align:1px;border-radius:1.5px}
+.btn{min-height:44px}
+.open{display:inline-flex;gap:9px;align-items:center;border-radius:99px;padding:8px 16px;font-size:12px;font-weight:700}
+.open i{width:8px;height:8px;border-radius:50%;background:#2fbf71;animation:pl 2s infinite}
+.open.closed i{background:#9aa9b3;animation:none}
+@keyframes pl{0%{box-shadow:0 0 0 0 #2fbf7199}100%{box-shadow:0 0 0 9px #2fbf7100}}
+/* doctors are cut out of their original photos and set on brand tints, so every portrait matches */
+.dc .p,.team .d,.dm>div:not(.t){position:relative;background:#DCEFF5}
+.dc:nth-child(3n+2) .p,.team a:nth-child(3n+2) .d,.dm>div:nth-child(3):not(.t),.dm>div:nth-child(7):not(.t){background:#D5F0EA}
+.dc:nth-child(3n) .p,.team a:nth-child(3n) .d,.dm>div:nth-child(5):not(.t){background:#E2E8F8}
+.dc .p img{padding-top:9%;object-position:top center}
+.dm>div:not(.t) img,.team .d img{padding-top:34%}
+.dc .p>span{z-index:1}
+.av img{background:#DCEFF5}
+/* the per-concept menu background is only for the full-screen mobile menu */
+@media(min-width:861px){.nav .menu{background:none!important}}
+/* page intro: the logo on white, then the sheet lifts away */
+body:before{content:"";position:fixed;inset:0;z-index:99;background:#fff url(logo.png) center/190px no-repeat;pointer-events:none;animation:intro .8s .9s cubic-bezier(.7,0,.2,1) forwards}
+@keyframes intro{to{clip-path:inset(0 0 100% 0)}}
+/* marquee: two rows drifting opposite ways, edges fade out, speed and lean follow the scroll (see base.js) */
+.tick{overflow:hidden;padding:40px 0;display:grid;gap:14px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent)}
+.tick>div{display:flex;align-items:center;gap:28px;width:max-content;white-space:nowrap;font-size:clamp(22px,2.5vw,36px);font-weight:700;font-stretch:88%;will-change:transform}
+.tick>div:nth-child(2){opacity:.55}
+.tick>div>i{flex:none;width:9px;height:9px;rotate:45deg;border-radius:2px;background:var(--mint)}
+.tick>div>span:nth-of-type(even){color:transparent;-webkit-text-stroke:1.1px var(--tk,#12303F)}
+.tick.pills{padding:6px 0}.tick.pills>div{gap:12px;font-size:13px;font-weight:400;opacity:1}
+/* v3, after studying current Awwwards winners: no nav bar, small spaced links, thin display type, quieter buttons */
+.nav{position:absolute;left:0;right:0;top:0;margin:0;max-width:none;padding:26px 36px}
+.nav::before{display:none}
+.nav .logo img{height:34px}
+.story,.hero,.stage{margin-top:0!important}
+.btn{min-height:40px;padding:11px 20px;font-size:11px;letter-spacing:.07em;font-weight:500}
+h1,h2,h3{font-weight:600!important;font-stretch:92%!important;letter-spacing:-.005em}
+h2{font-size:clamp(28px,3.2vw,48px)}
+.lbl,.st,.count{letter-spacing:.14em}
+@media(min-width:861px){.nav .menu{gap:36px;font-size:11px;font-weight:500;letter-spacing:.09em}}
+@media(max-width:860px){.nav{margin:0;padding:18px;top:0}.nav .menu{font-weight:300}}
+.noin body:before{display:none}
+
+/* v4: calmer system shared by all three. lighter display weights, more air between sections, flat panels, tracked small labels */
+body{font-size:16px;line-height:1.6}
+h1,h2,h3{font-weight:500!important;letter-spacing:-.012em}
+h2{font-size:clamp(30px,3.4vw,52px);line-height:1.08}
+h3{font-weight:600!important}
+.lbl{font-weight:500;letter-spacing:.16em;font-size:11px}
+.hd{margin:128px 0 36px!important}
+.btn{font-weight:500;letter-spacing:.08em;font-size:11px;padding:12px 22px}
+.all{font-size:11px;letter-spacing:.08em;font-weight:500;box-shadow:inset 0 0 0 1px currentColor!important}
+.open{font-weight:500;font-size:11px;letter-spacing:.04em}
+.tick{padding:56px 0}
+.tick>div{font-weight:500;font-stretch:92%;gap:34px}
+.tick>div>span:nth-of-type(even){-webkit-text-stroke-width:.8px}
+.ft .in{border-radius:28px;padding-top:72px}
+.ft h2{font-size:clamp(28px,3vw,44px)}
+.ft .lbl{letter-spacing:.16em;font-weight:500}
+.ft .mail{font-weight:500}
+.ft li b{letter-spacing:.14em;font-weight:500}
+.ft .soc a{font-weight:500;font-size:11px;letter-spacing:.06em}
+.ft .cols{margin:64px 0 48px}
+@media(max-width:860px){.hd{margin:72px 0 24px!important}.ft .in{padding-top:48px}.ft .cols{margin:40px 0 28px}}

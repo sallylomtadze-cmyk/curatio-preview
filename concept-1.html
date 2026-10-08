@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ka">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>კურაციო · ცოცხალი მოზაიკა</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wdth,wght@62.5..100,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+<link rel="stylesheet" href="base.css">
+<style>
+:root{--tk:#fff;--teal:#207898;--mint:#30B8A8;--blue:#3088C8;--navy:#204088;--deep:#0C1E3E;--pan:#12294F;--mist:#EEF6FA;--ink:#12303F;--mut:#9fb6c9;--ln:#ffffff1f;--ft-bg:#12294F}
+body{background:var(--deep);color:#fff}
+h1,h2,h3{font-weight:700;line-height:1.12;font-stretch:88%}
+.nav{color:var(--ink)}
+.nav .menu{background:#fff}
+.nav .bk{background:var(--teal);color:#fff;padding:10px 18px;font-size:12px}
+.lbl{font-size:11px;font-weight:700;color:var(--mint)}
+.pri{background:var(--mint);color:var(--deep)}
+.gh{box-shadow:inset 0 0 0 1.5px #ffffff70;margin-left:8px}
+
+/* ---- story: the logo's diamonds stay pinned and re-form as you scroll through the services ---- */
+.story{height:520vh;margin-top:-68px}
+.pin{position:sticky;top:0;height:100vh;overflow:hidden;display:grid;align-items:center;background:radial-gradient(60% 70% at 72% 50%,#1b4a86 0,#0C1E3E 70%)}
+#mo{position:absolute;right:max(2vw,calc(50% - 620px));top:53%;translate:0 -50%;width:min(78vh,44vw);aspect-ratio:1;filter:drop-shadow(0 0 26px #3fd0c040)}
+.glow{position:absolute;right:max(2vw,calc(50% - 620px));top:53%;translate:0 -50%;width:min(78vh,44vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,var(--gl,#2a8fd0) 0,transparent 72%);opacity:.5;transition:background 1s;animation:br 6s ease-in-out infinite}
+@keyframes br{50%{scale:1.14;opacity:.65}}
+.pin[data-step="1"] .glow{--gl:#30B8A8}.pin[data-step="2"] .glow{--gl:#4d8fe6}.pin[data-step="3"] .glow{--gl:#30B8A8}.pin[data-step="4"] .glow{--gl:#5a67c9}
+.pin>.wrap{width:100%}
+.txt{display:grid;max-width:450px;position:relative;z-index:2}
+.s{grid-area:1/1;opacity:0;visibility:hidden;translate:0 26px;transition:opacity .45s,translate .7s cubic-bezier(.2,.8,.2,1),visibility 0s .45s;pointer-events:none}
+.pin[data-step="0"] .s0,.pin[data-step="1"] .s1,.pin[data-step="2"] .s2,.pin[data-step="3"] .s3,.pin[data-step="4"] .s4{opacity:1;visibility:visible;translate:0;pointer-events:auto;transition-delay:.15s,.15s,0s}
+.open{box-shadow:inset 0 0 0 1px #ffffff40}
+h1{font-size:clamp(32px,4vw,58px);margin:22px 0 18px}
+h1 em{font-style:normal;color:var(--mint)}
+.s p{color:#c5d6e6;max-width:26em}
+.s0 p{margin-bottom:28px}
+.s .n{font-size:13px;font-weight:700;color:var(--mint);font-variant-numeric:tabular-nums}
+.s h2{font-size:clamp(28px,3.4vw,48px);margin:14px 0 16px}
+.lnk{display:inline-flex;gap:8px;align-items:center;margin-top:24px;font-size:13px;font-weight:700;padding-bottom:4px;border-bottom:1.5px solid var(--mint)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:18px}
+.chips span{font-size:12px;padding:7px 13px;border-radius:99px;background:#ffffff14;box-shadow:inset 0 0 0 1px var(--ln)}
+.dots{list-style:none;padding:0;position:absolute;left:max(18px,calc(50% - 640px));top:50%;translate:0 -50%;display:grid;gap:10px}
+.dots li{width:3px;height:22px;border-radius:3px;background:#ffffff33;transition:.4s}
+.pin[data-step="0"] .dots li:nth-child(1),.pin[data-step="1"] .dots li:nth-child(2),.pin[data-step="2"] .dots li:nth-child(3),.pin[data-step="3"] .dots li:nth-child(4),.pin[data-step="4"] .dots li:nth-child(5){background:var(--mint);height:40px}
+.hint{position:absolute;left:50%;bottom:22px;translate:-50%;font-size:11px;font-weight:700;color:var(--mut);display:flex;gap:8px;align-items:center;transition:opacity .4s}
+.hint i{font-size:16px;animation:nd 1.6s ease-in-out infinite}
+@keyframes nd{50%{translate:0 6px}}
+.pin:not([data-step="0"]) .hint{opacity:0}
+
+.hd{display:flex;justify-content:space-between;align-items:end;gap:20px;margin:56px 0 28px}
+h2{font-size:clamp(24px,2.6vw,38px);margin-top:10px}
+.all{display:inline-flex;gap:8px;align-items:center;font-size:13px;font-weight:700;padding:11px 18px;border-radius:99px;box-shadow:inset 0 0 0 1.5px #fff;white-space:nowrap;transition:.25s}
+.all:hover{background:#fff;color:var(--deep)}
+.docs{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 28px 20px;margin:0 -28px;scrollbar-width:none}
+.dc{flex:0 0 250px;scroll-snap-align:start}
+.dc .p{border-radius:26px;overflow:hidden;aspect-ratio:4/5}
+.dc img{width:100%;height:100%;object-fit:cover;transition:scale .6s cubic-bezier(.2,.8,.2,1)}
+.dc:hover img{scale:1.06}
+.dc .p span{position:absolute;left:12px;bottom:12px;background:#ffffffe6;color:var(--ink);backdrop-filter:blur(10px);border-radius:99px;padding:6px 12px;font-size:11px;font-weight:700}
+.dc b{display:block;margin-top:14px;font-size:15px}
+.dc small{font-size:13px;color:var(--mut)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:96px 0}
+.pan{border-radius:32px;padding:36px;background:var(--pan);box-shadow:inset 0 0 0 1px var(--ln)}
+.pan h2{margin:8px 0 22px}
+.hours li{display:flex;justify-content:space-between;padding:11px 14px;border-radius:14px;font-size:15px;color:#c5d6e6}
+.hours li.today{background:#ffffff14;color:#fff;font-weight:700}
+.hours li span:last-child{font-variant-numeric:tabular-nums}
+.pan.b{background:linear-gradient(150deg,#207898,#1b4a86);display:flex;flex-direction:column;justify-content:space-between;gap:28px}
+.pan.b .lbl{color:#bff0e8}
+.ins{display:flex;gap:8px;flex-wrap:wrap}
+.ins span{padding:10px 16px;border-radius:99px;font-size:13px;font-weight:700;box-shadow:inset 0 0 0 1px #ffffff55}
+.cab{display:flex;gap:16px;align-items:center;background:#ffffff1a;border-radius:22px;padding:18px}
+.cab>i:first-child{font-size:34px;color:#bff0e8}
+.cab small{display:block;color:#d6e6f0}
+@media(max-width:860px){
+  .story{margin-top:-58px}
+  .s{align-self:end}
+  .pin{align-items:end;padding-bottom:104px;background:radial-gradient(90% 50% at 50% 30%,#1b4a86 0,#0C1E3E 75%)}
+  .glow{right:auto;left:50%;top:70px;translate:-50% 0;width:min(66vw,27vh)}
+  #mo{right:auto;left:50%;top:70px;translate:-50%;width:min(66vw,27vh)}
+  .dots{display:none}
+  .s0 p{display:none}
+  h1{margin:16px 0 20px}
+  .hint{display:none}
+  .gh{margin:10px 0 0 6px}
+  .s h2{margin:10px 0 12px}
+  .hd{margin:60px 0 20px}
+  .dc{flex-basis:200px}
+  .split{grid-template-columns:1fr;margin:60px 0}.pan{padding:24px}
+}
+/* v3 */
+.nav{color:#fff}.nav .logo img{filter:brightness(0) invert(1)}
+.nav .menu{background:var(--deep)}
+.nav .bk{background:none;box-shadow:inset 0 0 0 1px #ffffff8c;color:#fff}
+.txt{max-width:600px}
+h1{font-size:clamp(36px,5.2vw,82px);line-height:1.03;margin:24px 0 22px}
+.s h2{font-size:clamp(34px,4.6vw,72px);line-height:1.03}
+.s p{font-size:16px}
+@media(max-width:860px){h1{font-size:34px}.s h2{font-size:32px}}
+/* v4: dimmer stage, finer lattice, quieter cards and panels */
+.pin{background:radial-gradient(55% 60% at 72% 50%,#143868 0,#0C1E3E 72%)}
+.glow{opacity:.32}
+.s p{color:#aebfd2;font-size:16px}
+.chips span{background:none;box-shadow:inset 0 0 0 1px #ffffff2e;font-weight:400}
+.lnk{font-weight:500;font-size:11px;letter-spacing:.08em;border-bottom-width:1px}
+.s .n{font-weight:500;letter-spacing:.14em;font-size:11px}
+h1{font-size:clamp(36px,4.8vw,74px)}.s h2{font-size:clamp(32px,4.2vw,64px)}
+.dc{flex-basis:300px}.dc .p{border-radius:20px}
+.dc .p span{font-weight:500;font-size:10px;letter-spacing:.08em}
+.dc b{font-weight:500;font-size:16px;margin-top:16px}
+.split{gap:16px;margin:128px 0}
+.pan{border-radius:24px;background:#10254a;box-shadow:inset 0 0 0 1px #ffffff12}
+.pan.b{background:var(--teal)}
+.hours li{padding:12px 14px;border-radius:12px;font-size:15px}
+.ins span{font-weight:400;font-size:13px;box-shadow:inset 0 0 0 1px #ffffff40}
+.cab{border-radius:18px}
+.hint{font-weight:500;letter-spacing:.12em}
+@media(max-width:860px){.split{margin:72px 0;gap:10px}.dc{flex-basis:220px}}
+/* UI kit option F: gradient slab primaries, white-card secondaries, 16px corners, Phosphor Bold icons */
+.btn,.nav .bk,.all,.mbar a,.btn.pri,.nav .bk,.mbar a:last-child,.btn.gh,.all,.mbar a:first-child{border-radius:16px}
+.btn.pri,.nav .bk,.mbar a:last-child{background:linear-gradient(135deg,#34c4b2,#1f7fa4);color:#fff;box-shadow:inset 0 1px 0 #ffffff66,0 14px 28px -16px #1f7fa4;transition:.3s}
+.btn.pri:hover,.nav .bk:hover,.mbar a:last-child:hover{transform:translateY(-3px);box-shadow:inset 0 1px 0 #ffffff66,0 22px 32px -16px #1f7fa4}
+.btn.gh,.all,.mbar a:first-child{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line),0 10px 24px -18px #12303f}
+.btn.gh i,.all i,.mbar a:first-child i{color:var(--teal)}
+.btn i,.mbar a i{font-size:18px}
+.ins{gap:14px 28px;align-items:center}.ins img{height:34px;width:auto;filter:brightness(0) invert(1);opacity:.92}
+</style>
+</head>
+<body>
+<header class="nav">
+  <input type="checkbox" id="m" aria-label="მენიუ">
+  <a class="logo" href="#"><img src="logo.png" alt="კურაციო"></a>
+  <ul class="menu mt"><li><a href="#">მომსახურება</a></li><li><a href="#">ექიმები</a></li><li><a href="#">ჩვენ შესახებ</a></li><li><a href="#">სიახლეები</a></li><li><a href="#">კონტაქტი</a></li></ul>
+  <div class="tools"><a class="btn bk mt hide-m" href="#">ჩაწერა</a>
+    <label class="burger" for="m"><i class="o ph ph-list"></i><i class="x ph ph-x"></i></label></div>
+</header>
+
+<section class="story" id="story">
+  <div class="pin" data-step="0">
+    <i class="glow"></i><canvas id="mo" aria-hidden="true"></canvas>
+    <ol class="dots" aria-hidden="true"><li></li><li></li><li></li><li></li><li></li></ol>
+    <div class="wrap">
+      <div class="txt">
+        <div class="s s0">
+          <span class="open" data-open><i></i><span></span></span>
+          <h1>სამედიცინო ზრუნვა, <em>აწყობილი შენ გარშემო</em></h1>
+          <p>კურაციო ლათინურად სამედიცინო ზრუნვას ნიშნავს. პირადი ექიმი, სპეციალისტები და დიაგნოსტიკა ერთ კლინიკაში, კვირაში შვიდი დღე.</p>
+          <a class="btn pri mt" href="#">ექიმთან ჩაწერა <i class="ph-bold ph-arrow-up-right"></i></a><a class="btn gh mt" href="#">იპოვე ექიმი</a>
+        </div>
+        <div class="s s1"><span class="n">01 / 04</span><h2>პირადი ექიმი</h2><p>ერთი ექიმი, რომელიც იცნობს შენს ისტორიას და რისკებს ადრევე ამჩნევს. სწორედ ამ იდეით დაიწყო კურაციო.</p><a class="lnk mt" href="#">აირჩიე პირადი ექიმი <i class="ph-bold ph-arrow-right"></i></a></div>
+        <div class="s s2"><span class="n">02 / 04</span><h2>პედიატრია</h2><p>ბავშვის ჯანმრთელობაზე ზრუნვა დაბადებიდან: პედიატრები და ბავშვთა ნევროლოგი და ენდოკრინოლოგი ერთ გუნდში.</p><a class="lnk mt" href="#">ბავშვთა ექიმები <i class="ph-bold ph-arrow-right"></i></a></div>
+        <div class="s s3"><span class="n">03 / 04</span><h2>დიაგნოსტიკა და ლაბორატორია</h2><p>ულტრასონოგრაფია, რენტგენოგრაფია, ენდოსკოპია და კლინიკური ლაბორატორია იმავე შენობაში. პასუხები ონლაინ კაბინეტში მოდის.</p><a class="lnk mt" href="#">ყველა კვლევა <i class="ph-bold ph-arrow-right"></i></a></div>
+        <div class="s s4"><span class="n">04 / 04</span><h2>13 კლინიკური დარგი</h2><p>როცა სპეციალისტი გჭირდება, შორს წასვლა არ მოგიწევს.</p><div class="chips"><span>გინეკოლოგია</span><span>ნევროლოგია</span><span>კარდიოლოგია</span><span>ენდოკრინოლოგია</span><span>დერმატოლოგია</span><span>უროლოგია</span><span>ოფთალმოლოგია</span><span>ანგიოლოგია</span><span>ტრავმატოლოგია</span><span>ფიზიოთერაპია</span></div></div>
+      </div>
+    </div>
+    <span class="hint mt">ჩამოსქროლე<i class="ph-bold ph-arrow-down"></i></span>
+  </div>
+</section>
+<section class="tick" aria-hidden="true"><div class="mt"><span>გინეკოლოგია</span><i></i><span>ნევროლოგია</span><i></i><span>კარდიოლოგია</span><i></i><span>ენდოკრინოლოგია</span><i></i><span>დერმატოლოგია</span><i></i><span>უროლოგია</span><i></i><span>ოფთალმოლოგია</span><i></i><span>პედიატრია</span><i></i><span>გინეკოლოგია</span><i></i><span>ნევროლოგია</span><i></i><span>კარდიოლოგია</span><i></i><span>ენდოკრინოლოგია</span><i></i><span>დერმატოლოგია</span><i></i><span>უროლოგია</span><i></i><span>ოფთალმოლოგია</span><i></i><span>პედიატრია</span><i></i></div><div class="mt"><span>ულტრასონოგრაფია</span><i></i><span>რენტგენოგრაფია</span><i></i><span>ენდოსკოპია</span><i></i><span>ლაბორატორია</span><i></i><span>სტომატოლოგია</span><i></i><span>ფიზიოთერაპია</span><i></i><span>ანგიოლოგია</span><i></i><span>ტრავმატოლოგია</span><i></i><span>ულტრასონოგრაფია</span><i></i><span>რენტგენოგრაფია</span><i></i><span>ენდოსკოპია</span><i></i><span>ლაბორატორია</span><i></i><span>სტომატოლოგია</span><i></i><span>ფიზიოთერაპია</span><i></i><span>ანგიოლოგია</span><i></i><span>ტრავმატოლოგია</span><i></i></div></section>
+<main class="wrap">
+  <div class="hd rv"><div><p class="lbl mt">ჩვენი ექიმები</p><h2>ადამიანები, რომლებსაც ენდობი</h2></div><a class="all mt" href="#">ყველა ექიმი <i class="ph-bold ph-arrow-up-right"></i></a></div>
+  <section class="docs rv">
+    <a class="dc" href="#"><div class="p"><img src="img/c13.webp" alt=""><span class="mt">პირადი ექიმი</span></div><b class="mt">თინათინ ჯიღაური</b><small>საოჯახო მედიცინა</small></a>
+    <a class="dc" href="#"><div class="p"><img src="img/c6.webp" alt=""><span class="mt">ტრავმატოლოგი</span></div><b class="mt">გელა ბაჯელიძე</b><small>ორთოპედ-ტრავმატოლოგი</small></a>
+    <a class="dc" href="#"><div class="p"><img src="img/c5.webp" alt=""><span class="mt">პედიატრი</span></div><b class="mt">ნელი სიმონიშვილი</b><small>პედიატრია</small></a>
+    <a class="dc" href="#"><div class="p"><img src="img/c9.webp" alt=""><span class="mt">ქირურგი</span></div><b class="mt">კაკო გუგულაშვილი</b><small>ქირურგია</small></a>
+    <a class="dc" href="#"><div class="p"><img src="img/c38.webp" alt=""><span class="mt">პირადი ექიმი</span></div><b class="mt">ზვიად კობახიძე</b><small>საოჯახო მედიცინა</small></a>
+    <a class="dc" href="#"><div class="p"><img src="img/c25.webp" alt=""><span class="mt">კარდიოლოგი</span></div><b class="mt">ლევან მიქაძე</b><small>კარდიოლოგია</small></a>
+    <a class="dc" href="#"><div class="p"><img src="img/c41.webp" alt=""><span class="mt">უროლოგი</span></div><b class="mt">არჩილ ჩხოტუა</b><small>უროლოგია</small></a>
+  </section>
+
+  <section class="split rv">
+    <div class="pan"><p class="lbl mt">სამუშაო საათები</p><h2>ღია ვართ ყოველდღე</h2>
+      <ul class="hours"><li data-d="1"><span>ორშაბათი</span><span>09:00 – 20:30</span></li><li data-d="2"><span>სამშაბათი</span><span>09:00 – 20:30</span></li><li data-d="3"><span>ოთხშაბათი</span><span>09:00 – 20:30</span></li><li data-d="4"><span>ხუთშაბათი</span><span>09:00 – 20:30</span></li><li data-d="5"><span>პარასკევი</span><span>09:00 – 20:30</span></li><li data-d="6"><span>შაბათი</span><span>10:00 – 18:00</span></li><li data-d="0"><span>კვირა</span><span>10:00 – 16:00</span></li></ul></div>
+    <div class="pan b">
+      <div><p class="lbl mt">დაზღვევა</p><h2>ვემსახურებით დაზღვეულებსაც</h2>
+        <div class="ins mt"><img src="img/ins/gpi.png" alt="ჯი პი აი ჰოლდინგი"><img src="img/ins/aldagi.svg" alt="ალდაგი"><img src="img/ins/irao.png" alt="ირაო"><img src="img/ins/ardi.svg" alt="არდი"><img src="img/ins/unison.png" alt="უნისონი"></div></div>
+      <a class="cab" href="#"><i class="ph-bold ph-desktop"></i><span><b class="mt">ონლაინ კაბინეტი</b><small>ანალიზების პასუხები და ვიზიტების ისტორია</small></span><i class="ph-bold ph-arrow-up-right" style="margin-left:auto;font-size:22px"></i></a>
+    </div>
+  </section>
+</main>
+<footer class="ft"><div class="in">
+  <div class="top">
+    <div><p class="lbl mt">ჩაწერა</p><h2>ჩაეწერე ვიზიტზე დღესვე</h2></div>
+    <a class="mail" href="tel:+995322430101"><span>+995 32 243 01 01</span><i class="ph-bold ph-phone"></i></a>
+  </div>
+  <div class="cols">
+    <ul class="mt"><li><b>მომსახურება</b></li><li><a href="#">პირადი ექიმი</a></li><li><a href="#">პედიატრია</a></li><li><a href="#">დიაგნოსტიკა</a></li><li><a href="#">ლაბორატორია</a></li></ul>
+    <ul class="mt"><li><b>კლინიკა</b></li><li><a href="#">ჩვენ შესახებ</a></li><li><a href="#">ექიმები</a></li><li><a href="#">კარიერა</a></li><li><a href="#">სიახლეები</a></li></ul>
+    <ul><li class="mt"><b>კონტაქტი</b></li><li>თბილისი, ო. ლორთქიფანიძის 31</li><li>info@curatio.ge</li><li>ორშ–პარ 09:00–20:30</li></ul>
+    <div class="soc mt"><a href="#">ონლაინ კაბინეტი<i class="ph-bold ph-user-circle"></i></a><a href="#">შეკითხვა ექიმს<i class="ph-bold ph-chat-circle-dots"></i></a><a href="#">Facebook<i class="ph-bold ph-facebook-logo"></i></a></div>
+  </div>
+  <div class="bot"><img class="wm" src="logo.png" alt="კურაციო"><span>© 2026 სს კურაციო</span><a class="up mt" href="#">ზემოთ <i class="ph-bold ph-arrow-up"></i></a></div>
+</div></footer>
+<nav class="mbar mt"><a href="tel:+995322430101"><i class="ph-bold ph-phone"></i>დარეკვა</a><a href="#"><i class="ph-bold ph-calendar-check"></i>ჩაწერა</a></nav>
+<script src="base.js"></script>
+<script>
+// Living mosaic: a lattice of diamonds; each step of the scroll picks a shape and every diamond eases on or off.
+const cv = document.getElementById('mo'), cx = cv.getContext('2d'), pin = document.querySelector('.pin'), story = document.getElementById('story');
+const COL = ['#30B8A8', '#3088C8', '#63D2C4', '#7FB6E6', '#E6F4F8', '#4B62C4'];
+const seg = [[-1, 0], [-.5, 0], [-.32, -.5], [-.1, .62], [.12, -.78], [.32, .3], [.48, 0], [1, 0]];
+const dseg = (x, y) => { let m = 9; for (let i = 0; i < seg.length - 1; i++) { const [a, b] = seg[i], [c, d] = seg[i + 1];
+  const t = Math.max(0, Math.min(1, ((x - a) * (c - a) + (y - b) * (d - b)) / ((c - a) ** 2 + (d - b) ** 2))); m = Math.min(m, Math.hypot(x - a - t * (c - a), y - b - t * (d - b))); } return m; };
+const SHAPES = [
+  (x, y, h) => Math.abs(x) + Math.abs(y) < 1 && h > .22,                                              // the logo's cluster
+  (x, y) => { const X = x * 1.25, Y = -y * 1.25 + .25; return (X * X + Y * Y - 1) ** 3 - X * X * Y ** 3 < 0; }, // heart
+  (x, y) => { const r = Math.hypot(x, y); return (r < 1 && r > .8) || Math.hypot(Math.abs(x) - .36, y + .3) < .14 || (r < .62 && r > .46 && y > .12); }, // smile
+  (x, y) => dseg(x, y) < .085,                                                                         // pulse line
+  (x, y) => (Math.abs(x) < .3 && Math.abs(y) < .95) || (Math.abs(y) < .3 && Math.abs(x) < .95)         // cross
+];
+const G = .12, cells = [];
+for (let r = -18; r <= 18; r++) for (let c = -9; c <= 9; c++) {
+  const x = c * G + (r & 1 ? G / 2 : 0), y = r * G / 2;
+  if (Math.abs(x) <= 1.08 && Math.abs(y) <= 1.08) cells.push({ x, y, h: Math.abs(Math.sin(x * 91.7 + y * 47.3) * 43758.5) % 1, s: 0 });
+}
+let step = 0, px = 9, py = 9;
+const size = () => { const d = Math.min(devicePixelRatio || 1, 2), w = cv.clientWidth; cv.width = cv.height = w * d; };
+addEventListener('resize', size); size();
+pin.addEventListener('pointermove', e => { const b = cv.getBoundingClientRect(); px = ((e.clientX - b.left) / b.width - .5) * 2.3; py = ((e.clientY - b.top) / b.height - .5) * 2.3; });
+const onScroll = () => { const p = (scrollY - story.offsetTop) / (story.offsetHeight - innerHeight); step = Math.max(0, Math.min(4, Math.floor(p * 5))); pin.dataset.step = step; };
+addEventListener('scroll', onScroll, { passive: true }); onScroll();
+(function draw(now) {
+  const S = cv.width, k = S / 2.3, T = (now || 0) / 1000; cx.clearRect(0, 0, S, S);
+  for (const c of cells) {
+    const on = SHAPES[step](c.x, c.y, c.h); c.s += ((on ? 1 : .1) - c.s) * (.05 + .1 * c.h);
+    const near = Math.max(0, 1 - Math.hypot(c.x - px, c.y - py) / .34), d = G * k * .6 * c.s * (1 + near * .5) * (1 + .09 * Math.sin(T * 1.6 + c.x * 3 + c.y * 2));   // slow breathing wave
+    cx.save(); cx.translate(S / 2 + c.x * k, S / 2 + c.y * k); cx.rotate(Math.PI / 4);
+    cx.globalAlpha = c.s > .5 ? .35 + .65 * c.s : .11 + near * .5;
+    cx.fillStyle = c.s > .5 || near > .2 ? COL[Math.floor(c.h * COL.length)] : '#fff';
+    cx.beginPath(); cx.roundRect(-d / 2, -d / 2, d, d, d * .18); cx.fill(); cx.restore();
+  }
+  requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>

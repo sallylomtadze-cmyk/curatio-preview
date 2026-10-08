@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="ka">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>კურაციო · სცენა</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wdth,wght@62.5..100,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+<link rel="stylesheet" href="base-v3.css">
+<style>
+@property --bg{syntax:'<color>';inherits:true;initial-value:#1b6f8e}
+@property --bg2{syntax:'<color>';inherits:true;initial-value:#46aed2}
+:root{--teal:#207898;--mint:#30B8A8;--blue:#3088C8;--navy:#204088;--deep:#163057;--mist:#EEF6FA;--ink:#12303F;--line:#12303f1f;--mut:#5d7684;--ft-bg:#EEF6FA;--ft-fg:#12303F;--ft-ac:#207898;--ft-btn:#fff;--ft-wm:none}
+body{background:#fff;color:var(--ink)}
+h1,h2,h3{font-weight:700;line-height:1.12;font-stretch:88%}
+.nav .menu{background:#fff}
+.nav .bk{background:var(--ink);color:#fff;padding:10px 18px;font-size:12px}
+.lbl{font-size:11px;font-weight:700;color:var(--teal)}
+
+/* ---- stage: one doctor and one direction at a time; the whole screen takes that direction's colour ---- */
+.stage{position:relative;min-height:100svh;margin-top:-68px;padding:118px 0 26px;background:radial-gradient(60% 75% at 58% 60%,var(--bg2),var(--bg));color:#fff;overflow:hidden;transition:--bg .9s,--bg2 .9s;display:grid;grid-template-rows:1fr auto;gap:18px}
+.stage[data-f="2"]{--bg:#127a6e;--bg2:#3cc4b3}
+.stage[data-f="3"]{--bg:#1f5690;--bg2:#4d9ede}
+.stage[data-f="4"]{--bg:#272f7c;--bg2:#5a67c9}
+.mo{position:absolute;left:55%;top:50%;width:min(96vh,62vw);translate:-50% -50%;filter:brightness(0) invert(1);opacity:.13;animation:tn 80s linear infinite}
+@keyframes tn{to{rotate:360deg}}
+.ppl img{position:absolute;left:55%;bottom:0;height:min(80svh,760px);max-width:none;translate:-50% 60px;scale:.94;opacity:0;transition:opacity .45s,translate .9s cubic-bezier(.2,.8,.2,1),scale .9s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 30px 40px #0a1e3c66)}
+.stage[data-f="1"] .ppl .i1,.stage[data-f="2"] .ppl .i2,.stage[data-f="3"] .ppl .i3,.stage[data-f="4"] .ppl .i4{opacity:1;translate:-50% 0;scale:1}
+.floor{position:absolute;left:55%;bottom:-40px;width:min(60vh,44vw);height:110px;translate:-50%;border-radius:50%;background:radial-gradient(closest-side,#061a3066,transparent)}
+.lay{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;align-items:center;width:100%}
+.copy{display:grid}
+.copy>div{grid-area:1/1;max-width:400px;opacity:0;translate:0 24px;transition:opacity .5s,translate .7s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.stage[data-f="1"] .copy .i1,.stage[data-f="2"] .copy .i2,.stage[data-f="3"] .copy .i3,.stage[data-f="4"] .copy .i4{opacity:1;translate:0;pointer-events:auto}
+.count{font-size:13px;font-weight:700;opacity:.7;font-variant-numeric:tabular-nums}
+.count b{font-size:26px;font-stretch:88%;opacity:1;margin-right:6px}
+h1{font-size:clamp(32px,3.8vw,56px);margin:14px 0 16px}
+.copy p{color:#ffffffd9;margin-bottom:26px;max-width:22em}
+.copy .btn{background:#fff;color:var(--ink)}
+.side{justify-self:end;display:grid;gap:10px;width:250px}
+.gl{background:#ffffff26;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:inset 0 0 0 1px #ffffff4d;border-radius:22px;padding:16px 18px;font-size:13px}
+.gl .t{font-size:10px;font-weight:700;opacity:.75;margin-bottom:8px}
+.gl b{display:block;font-size:15px}
+.who{min-height:74px}
+.who{display:grid}.who>div{grid-area:1/1;opacity:0;transition:opacity .5s}
+.stage[data-f="1"] .who .i1,.stage[data-f="2"] .who .i2,.stage[data-f="3"] .who .i3,.stage[data-f="4"] .who .i4{opacity:1}
+.gl .nx{display:flex;gap:8px;align-items:center;font-weight:700;font-size:18px;font-stretch:88%}
+.open{background:#ffffff26;box-shadow:inset 0 0 0 1px #ffffff4d;justify-self:start}
+.dock{position:relative;z-index:3;justify-self:center;display:flex;gap:8px;padding:8px;border-radius:99px;background:#ffffff26;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:inset 0 0 0 1px #ffffff4d}
+.dock button{all:unset;cursor:pointer;position:relative;display:flex;align-items:center;height:52px;border-radius:99px;font-size:12px;font-weight:700;overflow:hidden;transition:background .4s,padding .4s}
+.dock button span{flex:0 0 52px;height:52px;display:grid;place-items:center}
+.dock button img{width:40px;height:40px;border-radius:50%;object-fit:cover;object-position:top;background:#ffffff40;transition:.3s}
+.dock button:hover img{scale:1.1}
+.dock button em{font-style:normal;max-width:0;opacity:0;white-space:nowrap;transition:max-width .5s,opacity .3s}
+.dock button[aria-pressed="true"]{background:#fff;color:var(--ink);padding-right:20px}
+.dock button[aria-pressed="true"] em{max-width:150px;opacity:1}
+.dock button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.stage.auto .dock button[aria-pressed="true"]:after{content:"";position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--bg);transform-origin:left;animation:prog 4.6s linear}
+@keyframes prog{from{transform:scaleX(0)}}
+
+/* ---- finder ---- */
+.finder{padding-top:40px;text-align:center}
+h2{font-size:clamp(24px,2.6vw,38px);margin-top:10px}
+.find{display:flex;align-items:center;gap:12px;max-width:560px;margin:26px auto 18px;padding:8px 8px 8px 22px;border-radius:99px;box-shadow:inset 0 0 0 1.5px var(--ink);transition:box-shadow .2s}
+.find:focus-within{box-shadow:inset 0 0 0 2px var(--teal)}
+.find i{font-size:22px;color:var(--mut)}
+.find input{all:unset;flex:1;font:inherit;font-size:16px;text-align:left}
+.find span{background:var(--mist);border-radius:99px;padding:10px 16px;font-size:12px;font-weight:700;white-space:nowrap}
+.fil{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:860px;margin:auto}
+.fil button{all:unset;cursor:pointer;padding:9px 16px;border-radius:99px;font-size:13px;font-weight:500;box-shadow:inset 0 0 0 1px var(--line);transition:.2s}
+.fil button:hover{box-shadow:inset 0 0 0 1px var(--ink)}
+.fil button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.fil button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px;text-align:left}
+.dc{border-radius:26px;background:var(--mist);overflow:hidden;display:flex;flex-direction:column;transition:translate .35s cubic-bezier(.2,.8,.2,1)}
+.dc[hidden]{display:none}
+.dc:hover{translate:0 -6px}
+.dc .p{aspect-ratio:1;overflow:hidden}
+.dc img{width:100%;height:100%;object-fit:cover;transition:scale .6s cubic-bezier(.2,.8,.2,1)}
+.dc:hover img{scale:1.06}
+.nx2{position:absolute;left:10px;bottom:10px;display:inline-flex;gap:6px;align-items:center;background:#ffffffeb;backdrop-filter:blur(10px);border-radius:99px;padding:6px 12px;font-size:11px;font-weight:700}
+.nx2 i{font-size:14px;color:var(--teal)}
+.dc .i{padding:16px 18px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.dc b{display:block;font-size:14px}
+.dc small{font-size:13px;color:var(--mut)}
+.dc .go{flex:0 0 40px;height:40px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:20px;transition:.3s}
+.dc:hover .go{background:var(--teal);color:#fff}
+.none{display:none;padding:40px;color:var(--mut)}
+
+.cols{display:grid;grid-template-columns:1.25fr 1fr;gap:56px;margin-top:110px;align-items:start}
+details{border-top:1px solid var(--line)}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:20px 4px;font-size:18px;font-weight:600;font-stretch:88%}
+summary::-webkit-details-marker{display:none}
+summary>i:first-child{font-size:26px;color:var(--teal)}
+summary .pl{margin-left:auto;font-size:22px;transition:.3s}
+details[open] .pl{rotate:45deg}
+details p,details .chips{padding:0 4px 22px 46px;color:var(--mut);font-size:15px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chips span{font-size:13px;padding:7px 13px;border-radius:99px;background:var(--mist);color:var(--ink)}
+.sd{background:var(--mist);border-radius:30px;padding:30px;position:sticky;top:96px}
+.sd h3{font-size:20px;margin:6px 0 16px}
+.hours li{display:flex;justify-content:space-between;padding:9px 12px;border-radius:12px;font-size:14px}
+.hours li.today{background:#fff;font-weight:700}
+.hours li span:last-child{font-variant-numeric:tabular-nums}
+.sd .btn{width:100%;justify-content:center;background:var(--teal);color:#fff;margin-top:18px}
+.sd .tel{display:flex;gap:10px;align-items:center;justify-content:center;margin-top:14px;font-size:14px;font-weight:700}
+.band{border-radius:30px;box-shadow:inset 0 0 0 1px var(--line);padding:30px 34px;margin:96px 0;display:flex;justify-content:space-between;align-items:center;gap:26px;flex-wrap:wrap}
+.band .chips span{background:#fff;box-shadow:inset 0 0 0 1px var(--line);font-weight:700}
+@media(max-width:860px){
+  .stage{margin-top:-58px;padding:60svh 0 16px;grid-template-rows:auto auto;align-content:end}
+  .ppl img{left:50%;bottom:auto;top:64px;height:60svh;-webkit-mask-image:linear-gradient(#000 72%,transparent 97%);mask-image:linear-gradient(#000 72%,transparent 97%)}  /* mobile: the cut-out's hem fades into the background instead of ending in a hard line */
+  .floor{display:none}
+  .mo{left:50%;top:30svh;width:110vw}
+  .lay{grid-template-columns:1fr}
+  .side{display:none}
+  h1{margin:10px 0 12px}.copy p{margin-bottom:18px}
+  .count b{font-size:22px}
+  .dock{justify-self:stretch;margin:0 18px;justify-content:space-between}
+  .finder{padding-top:64px}
+  .find span{display:none}
+  .fil{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;margin:0 -18px;padding:2px 18px;scrollbar-width:none}
+  .fil button{white-space:nowrap}
+  .grid{grid-template-columns:1fr 1fr;gap:10px;margin-top:26px}
+  .dc .i{padding:12px}.dc .go{display:none}
+  .cols{grid-template-columns:1fr;gap:30px;margin-top:64px}
+  .sd{position:static}
+  summary{font-size:16px}
+  .band{margin:64px 0;padding:24px}
+}
+/* v3: one portrait on one colour, a thin word behind it, small text in the corners */
+.nav{color:#fff}.nav .logo img{filter:brightness(0) invert(1)}
+.nav .menu{background:var(--deep)}
+.nav .bk{background:#fff;color:var(--ink)}
+.ppl img,.mo,.floor{left:50%}
+.word{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;padding-bottom:8svh}
+.word span{grid-area:1/1;font-size:clamp(70px,13vw,220px);font-weight:700;opacity:.9;line-height:1;white-space:nowrap;opacity:0;translate:0 50px;transition:opacity .6s,translate 1s cubic-bezier(.2,.8,.2,1)}
+.stage[data-f="1"] .word .i1,.stage[data-f="2"] .word .i2,.stage[data-f="3"] .word .i3,.stage[data-f="4"] .word .i4{opacity:.92;translate:0}
+.lay{align-items:end;padding-bottom:26px}
+.copy>div{max-width:310px}
+.copy h1{font-size:clamp(22px,2.2vw,30px);font-weight:600!important;line-height:1.2;margin:10px 0 10px}
+.copy p{font-size:14px;margin-bottom:18px}
+.side{width:230px}
+@media(max-width:860px){.word{inset:96px 0 auto;height:46svh;padding:0;align-items:start}.word span{font-size:11vw}.ppl img{left:50%}.mo{left:50%}}
+/* UI kit option F: gradient slab primaries, white-card secondaries, 16px corners, Phosphor Bold icons */
+.btn,.nav .bk,.all,.mbar a,.btn,.nav .bk,.sd .btn,.mbar a:last-child,.mbar a:first-child{border-radius:16px}
+.btn,.nav .bk,.copy .btn,.sd .btn,.mbar a:last-child{background:linear-gradient(135deg,#34c4b2,#1f7fa4);color:#fff;box-shadow:inset 0 1px 0 #ffffff66,0 14px 28px -16px #1f7fa4;transition:.3s}
+.btn:hover,.nav .bk:hover,.copy .btn:hover,.sd .btn:hover,.mbar a:last-child:hover{transform:translateY(-3px);box-shadow:inset 0 1px 0 #ffffff66,0 22px 32px -16px #1f7fa4}
+.mbar a:first-child{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line),0 10px 24px -18px #12303f}
+.mbar a:first-child i{color:var(--teal)}
+.btn i,.mbar a i{font-size:18px}
+.band .chips{gap:14px 30px;align-items:center;padding:0}.band .chips img{height:36px;width:auto}
+</style>
+</head>
+<body>
+<header class="nav">
+  <input type="checkbox" id="m" aria-label="მენიუ">
+  <a class="logo" href="#"><img src="logo.png" alt="კურაციო"></a>
+  <ul class="menu mt"><li><a href="#">ექიმები</a></li><li><a href="#">მომსახურება</a></li><li><a href="#">ჩვენ შესახებ</a></li><li><a href="#">ონლაინ კაბინეტი</a></li><li><a href="#">კონტაქტი</a></li></ul>
+  <div class="tools"><a class="btn bk mt hide-m" href="#">ჩაწერა</a>
+    <label class="burger" for="m"><i class="o ph-bold ph-list"></i><i class="x ph-bold ph-x"></i></label></div>
+</header>
+
+<section class="stage auto" data-f="1">
+  <img class="mo" src="mosaic.svg" alt="">
+  <div class="word mt" aria-hidden="true"><span class="i1">ზრუნვა</span><span class="i2">პედიატრია</span><span class="i3">13 დარგი</span><span class="i4">კვლევა</span></div>
+  <i class="floor"></i>
+  <div class="ppl">
+    <img class="i1" src="img/c13.webp" alt="თინათინ ჯიღაური, პირადი ექიმი">
+    <img class="i2" src="img/c5.webp" alt="ნელი სიმონიშვილი, პედიატრი">
+    <img class="i3" src="img/c6.webp" alt="გელა ბაჯელიძე, ორთოპედ-ტრავმატოლოგი">
+    <img class="i4" src="img/c9.webp" alt="კაკო გუგულაშვილი, ქირურგი">
+  </div>
+  <div class="wrap lay">
+    <div class="copy">
+      <div class="i1"><p class="count"><b>01</b>/ 04</p><h1>პირადი ექიმი, რომელიც გიცნობს</h1><p>ერთი ექიმი მიგყვება წლების განმავლობაში და რისკებს ადრევე ამჩნევს.</p><a class="btn mt" href="#">ჩაეწერე პირად ექიმთან <i class="ph-bold ph-arrow-up-right"></i></a></div>
+      <div class="i2"><p class="count"><b>02</b>/ 04</p><h1>პედიატრია, დაბადებიდან</h1><p>პედიატრები და ბავშვთა სპეციალისტები ერთ გუნდში.</p><a class="btn mt" href="#">ჩაეწერე პედიატრთან <i class="ph-bold ph-arrow-up-right"></i></a></div>
+      <div class="i3"><p class="count"><b>03</b>/ 04</p><h1>13 დარგის სპეციალისტები</h1><p>ტრავმატოლოგიიდან კარდიოლოგიამდე, იმავე შენობაში.</p><a class="btn mt" href="#">ნახე ყველა დარგი <i class="ph-bold ph-arrow-up-right"></i></a></div>
+      <div class="i4"><p class="count"><b>04</b>/ 04</p><h1>დიაგნოსტიკა და ლაბორატორია</h1><p>ულტრასონოგრაფია, რენტგენი, ენდოსკოპია და ანალიზები ადგილზე.</p><a class="btn mt" href="#">ნახე კვლევები <i class="ph-bold ph-arrow-up-right"></i></a></div>
+    </div>
+    <div class="side">
+      <span class="open" data-open><i></i><span></span></span>
+      <div class="gl who"><div class="i1"><p class="t mt">ამ კადრში</p><b class="mt">თინათინ ჯიღაური</b>პირადი ექიმი</div><div class="i2"><p class="t mt">ამ კადრში</p><b class="mt">ნელი სიმონიშვილი</b>პედიატრი</div><div class="i3"><p class="t mt">ამ კადრში</p><b class="mt">გელა ბაჯელიძე</b>ორთოპედ-ტრავმატოლოგი</div><div class="i4"><p class="t mt">ამ კადრში</p><b class="mt">კაკო გუგულაშვილი</b>ქირურგი</div></div>
+      <div class="gl"><p class="t mt">უახლოესი თავისუფალი დრო</p><span class="nx"><i class="ph-bold ph-clock"></i>დღეს 15:30</span></div>
+    </div>
+  </div>
+  <div class="dock mt">
+    <button aria-pressed="true"><span><img src="img/c13.webp" alt=""></span><em>პირადი ექიმი</em></button>
+    <button aria-pressed="false"><span><img src="img/c5.webp" alt=""></span><em>პედიატრია</em></button>
+    <button aria-pressed="false"><span><img src="img/c6.webp" alt=""></span><em>სპეციალისტები</em></button>
+    <button aria-pressed="false"><span><img src="img/c9.webp" alt=""></span><em>დიაგნოსტიკა</em></button>
+  </div>
+</section>
+<section class="tick" aria-hidden="true"><div class="mt"><span>გინეკოლოგია</span><i></i><span>ნევროლოგია</span><i></i><span>კარდიოლოგია</span><i></i><span>ენდოკრინოლოგია</span><i></i><span>დერმატოლოგია</span><i></i><span>უროლოგია</span><i></i><span>ოფთალმოლოგია</span><i></i><span>პედიატრია</span><i></i><span>გინეკოლოგია</span><i></i><span>ნევროლოგია</span><i></i><span>კარდიოლოგია</span><i></i><span>ენდოკრინოლოგია</span><i></i><span>დერმატოლოგია</span><i></i><span>უროლოგია</span><i></i><span>ოფთალმოლოგია</span><i></i><span>პედიატრია</span><i></i></div><div class="mt"><span>ულტრასონოგრაფია</span><i></i><span>რენტგენოგრაფია</span><i></i><span>ენდოსკოპია</span><i></i><span>ლაბორატორია</span><i></i><span>სტომატოლოგია</span><i></i><span>ფიზიოთერაპია</span><i></i><span>ანგიოლოგია</span><i></i><span>ტრავმატოლოგია</span><i></i><span>ულტრასონოგრაფია</span><i></i><span>რენტგენოგრაფია</span><i></i><span>ენდოსკოპია</span><i></i><span>ლაბორატორია</span><i></i><span>სტომატოლოგია</span><i></i><span>ფიზიოთერაპია</span><i></i><span>ანგიოლოგია</span><i></i><span>ტრავმატოლოგია</span><i></i></div></section>
+<section class="finder wrap">
+  <p class="lbl mt">40-ზე მეტი ექიმი, 13 დარგი</p>
+  <h2>იპოვე ექიმი, რომელიც შენ გიხდება</h2>
+  <label class="find"><i class="ph-bold ph-magnifying-glass"></i><input id="q" type="search" placeholder="ექიმის სახელი ან გვარი" autocomplete="off"><span id="cnt"></span></label>
+  <div class="fil" id="fil">
+    <button aria-pressed="true" data-s="">ყველა</button><button aria-pressed="false" data-s="პირადი ექიმი">პირადი ექიმი</button><button aria-pressed="false" data-s="პედიატრი">პედიატრი</button><button aria-pressed="false" data-s="გინეკოლოგი">გინეკოლოგი</button><button aria-pressed="false" data-s="ნევროლოგი">ნევროლოგი</button><button aria-pressed="false" data-s="კარდიოლოგი">კარდიოლოგი</button><button aria-pressed="false" data-s="უროლოგი">უროლოგი</button><button aria-pressed="false" data-s="დერმატოლოგი">დერმატოლოგი</button><button aria-pressed="false" data-s="ქირურგი">ქირურგი</button><button aria-pressed="false" data-s="ორთოპედ-ტრავმატოლოგი">ტრავმატოლოგი</button>
+  </div>
+  <div class="grid" id="grid">
+    <a class="dc" href="#" data-s="პირადი ექიმი" data-n="თინათინ ჯიღაური"><div class="p"><img src="img/c13.webp" alt=""><span class="nx2"><i class="ph-bold ph-clock"></i>დღეს 15:30</span></div><div class="i"><span><b class="mt">თინათინ ჯიღაური</b><small>პირადი ექიმი</small></span><span class="go"><i class="ph-bold ph-calendar-plus"></i></span></div></a>
+    <a class="dc" href="#" data-s="პედიატრი" data-n="ნელი სიმონიშვილი"><div class="p"><img src="img/c5.webp" alt=""><span class="nx2"><i class="ph-bold ph-clock"></i>დღეს 17:00</span></div><div class="i"><span><b class="mt">ნელი სიმონიშვილი</b><small>პედიატრი</small></span><span class="go"><i class="ph-bold ph-calendar-plus"></i></span></div></a>
+    <a class="dc" href="#" data-s="ორთოპედ-ტრავმატოლოგი" data-n="გელა ბაჯელიძე"><div class="p"><img src="img/c6.webp" alt=""><span class="nx2"><i class="ph-bold ph-clock"></i>ხვალ 10:30</span></div><div class="i"><span><b class="mt">გელა ბაჯელიძე</b><small>ორთოპედ-ტრავმატოლოგი</small></span><span class="go"><i class="ph-bold ph-calendar-plus"></i></span></div></a>
+    <a class="dc" href="#" data-s="პირადი ექიმი" data-n="ზვიად კობახიძე"><div class="p"><img src="img/c38.webp" alt=""><span class="nx2"><i class="ph-bold ph-clock"></i>დღეს 18:30</span></div><div class="i"><span><b class="mt">ზვიად კობახიძე</b><small>პირადი ექიმი</small></span><span class="go"><i class="ph-bold ph-calendar-plus"></i></span></div></a>
+    <a class="dc" href="#" data-s="გინეკოლოგი" data-n="სოფიო კამლაძე"><div class="p"><img src="img/c39.webp" alt=""><span class="nx2"><i class="ph-bold ph-clock"></i>ხვალ 12:00</span></div><div class="i"><span><b class="mt">სოფიო კამლაძე</b><small>გინეკოლოგი</small></span><span class="go"><i class="ph-bold ph-calendar-plus"></i></span></div></a>
+    <a class="dc" href="#" data-s="ქირურგი" data-n="კაკო გუგულაშვილი"><div class="p"><img src="img/c9.webp" alt=""><span class="nx2"><i class="ph-bold ph-clock"></i>ხუთ 11:00</span></div><div class="i"><span><b class="mt">კაკო გუგულაშვილი</b><small>ქირურგი</small></span><span class="go"><i class="ph-bold ph-calendar-plus"></i></span></div></a>
+    <a class="dc" href="#" data-s="პირადი ექიმი" data-n="ნინო ბერიტაშვილი"><div class="p"><img src="img/c33.webp" alt=""><span class="nx2"><i class="ph-bold ph-clock"></i>დღეს 16:00</span></div><div class="i"><span><b class="mt">ნინო ბერიტაშვილი</b><small>პირადი ექიმი</small></span><span class="go"><i class="ph-bold ph-calendar-plus"></i></span></div></a>
+    <a class="dc" href="#" data-s="ნევროლოგი" data-n="ეკა იმედაშვილი"><div class="p"><img src="img/c22.webp" alt=""><span class="nx2"><i class="ph-bold ph-clock"></i>ხვალ 09:30</span></div><div class="i"><span><b class="mt">ეკა იმედაშვილი</b><small>ნევროლოგი</small></span><span class="go"><i class="ph-bold ph-calendar-plus"></i></span></div></a>
+    <a class="dc" href="#" data-s="კარდიოლოგი" data-n="ლევან მიქაძე"><div class="p"><img src="img/c25.webp" alt=""><span class="nx2"><i class="ph-bold ph-clock"></i>პარ 14:00</span></div><div class="i"><span><b class="mt">ლევან მიქაძე</b><small>კარდიოლოგი</small></span><span class="go"><i class="ph-bold ph-calendar-plus"></i></span></div></a>
+    <a class="dc" href="#" data-s="უროლოგი" data-n="არჩილ ჩხოტუა"><div class="p"><img src="img/c41.webp" alt=""><span class="nx2"><i class="ph-bold ph-clock"></i>ხვალ 15:30</span></div><div class="i"><span><b class="mt">არჩილ ჩხოტუა</b><small>უროლოგი</small></span><span class="go"><i class="ph-bold ph-calendar-plus"></i></span></div></a>
+    <a class="dc" href="#" data-s="დერმატოლოგი" data-n="ნელი ბაკურაძე"><div class="p"><img src="img/c37.webp" alt=""><span class="nx2"><i class="ph-bold ph-clock"></i>დღეს 19:00</span></div><div class="i"><span><b class="mt">ნელი ბაკურაძე</b><small>დერმატოლოგი</small></span><span class="go"><i class="ph-bold ph-calendar-plus"></i></span></div></a>
+    <a class="dc" href="#" data-s="პირადი ექიმი" data-n="ხათუნა გოგია"><div class="p"><img src="img/c34.webp" alt=""><span class="nx2"><i class="ph-bold ph-clock"></i>ხვალ 11:00</span></div><div class="i"><span><b class="mt">ხათუნა გოგია</b><small>პირადი ექიმი</small></span><span class="go"><i class="ph-bold ph-calendar-plus"></i></span></div></a>
+  </div>
+  <p class="none" id="none">ასეთი ექიმი ვერ მოიძებნა. სცადე სხვა სპეციალობა ან დაგვირეკე: 243 01 01</p>
+</section>
+
+<main class="wrap">
+  <section class="cols rv">
+    <div>
+      <p class="lbl mt">მომსახურება</p><h2 style="margin-bottom:26px">რით შეგვიძლია დაგეხმაროთ</h2>
+      <details open><summary><i class="ph-bold ph-stethoscope"></i>პირადი ექიმი და საოჯახო მედიცინა<i class="pl ph-bold ph-plus"></i></summary><p>ერთი ექიმი, რომელიც იცნობს შენს ისტორიას, ადრევე ამჩნევს რისკებს და საჭიროებისას სწორ სპეციალისტთან გაგზავნის.</p></details>
+      <details><summary><i class="ph-bold ph-baby-carriage"></i>პედიატრია<i class="pl ph-bold ph-plus"></i></summary><p>ბავშვის ჯანმრთელობაზე ზრუნვა დაბადებიდან.</p></details>
+      <details><summary><i class="ph-bold ph-first-aid-kit"></i>კლინიკური დარგები<i class="pl ph-bold ph-plus"></i></summary><div class="chips"><span>გინეკოლოგია</span><span>ნევროლოგია</span><span>დერმატოლოგია</span><span>უროლოგია</span><span>ოფთალმოლოგია</span><span>ოტორინოლარინგოლოგია</span><span>კარდიოლოგია</span><span>ანგიოლოგია</span><span>ტრავმატოლოგია</span><span>ფიზიოთერაპია</span><span>ენდოკრინოლოგია</span></div></details>
+      <details><summary><i class="ph-bold ph-heartbeat"></i>ინსტრუმენტული დიაგნოსტიკა<i class="pl ph-bold ph-plus"></i></summary><div class="chips"><span>ულტრასონოგრაფია</span><span>რენტგენოგრაფია</span><span>ენდოსკოპია</span></div></details>
+      <details><summary><i class="ph-bold ph-microscope"></i>კლინიკური ლაბორატორია<i class="pl ph-bold ph-plus"></i></summary><p>ანალიზები ადგილზე, პასუხები ონლაინ კაბინეტში.</p></details>
+      <details><summary><i class="ph-bold ph-tooth"></i>სტომატოლოგია<i class="pl ph-bold ph-plus"></i></summary><p>მკურნალობა და პროფილაქტიკა.</p></details>
+    </div>
+    <aside class="sd">
+      <p class="lbl mt">სამუშაო საათები</p><h3>მიღება წინასწარი ჩაწერით</h3>
+      <ul class="hours"><li data-d="1"><span>ორშაბათი</span><span>09:00 – 20:30</span></li><li data-d="2"><span>სამშაბათი</span><span>09:00 – 20:30</span></li><li data-d="3"><span>ოთხშაბათი</span><span>09:00 – 20:30</span></li><li data-d="4"><span>ხუთშაბათი</span><span>09:00 – 20:30</span></li><li data-d="5"><span>პარასკევი</span><span>09:00 – 20:30</span></li><li data-d="6"><span>შაბათი</span><span>10:00 – 18:00</span></li><li data-d="0"><span>კვირა</span><span>10:00 – 16:00</span></li></ul>
+      <a class="btn mt" href="#">ჩაწერა <i class="ph-bold ph-arrow-up-right"></i></a>
+      <a class="tel" href="tel:+995322430101"><i class="ph-bold ph-phone"></i>+995 32 243 01 01</a>
+    </aside>
+  </section>
+  <section class="band rv">
+    <div><p class="lbl mt">დაზღვევა</p><h3 style="font-size:20px;margin-top:6px">ვემსახურებით დაზღვეულებსაც</h3></div>
+    <div class="chips mt"><img src="img/ins/gpi.png" alt="ჯი პი აი ჰოლდინგი"><img src="img/ins/aldagi.svg" alt="ალდაგი"><img src="img/ins/irao.png" alt="ირაო"><img src="img/ins/ardi.svg" alt="არდი"><img src="img/ins/unison.png" alt="უნისონი"></div>
+  </section>
+</main>
+<footer class="ft"><div class="in">
+  <div class="top">
+    <div><p class="lbl mt">ჩაწერა</p><h2>ჩაეწერე ვიზიტზე დღესვე</h2></div>
+    <a class="mail" href="tel:+995322430101"><span>+995 32 243 01 01</span><i class="ph-bold ph-phone"></i></a>
+  </div>
+  <div class="cols">
+    <ul class="mt"><li><b>მომსახურება</b></li><li><a href="#">პირადი ექიმი</a></li><li><a href="#">პედიატრია</a></li><li><a href="#">დიაგნოსტიკა</a></li><li><a href="#">ლაბორატორია</a></li></ul>
+    <ul class="mt"><li><b>კლინიკა</b></li><li><a href="#">ჩვენ შესახებ</a></li><li><a href="#">ექიმები</a></li><li><a href="#">კარიერა</a></li><li><a href="#">სიახლეები</a></li></ul>
+    <ul><li class="mt"><b>კონტაქტი</b></li><li>თბილისი, ო. ლორთქიფანიძის 31</li><li>info@curatio.ge</li><li>ორშ–პარ 09:00–20:30</li></ul>
+    <div class="soc mt"><a href="#">ონლაინ კაბინეტი<i class="ph-bold ph-user-circle"></i></a><a href="#">შეკითხვა ექიმს<i class="ph-bold ph-chat-circle-dots"></i></a><a href="#">Facebook<i class="ph-bold ph-facebook-logo"></i></a></div>
+  </div>
+  <div class="bot"><img class="wm" src="logo.png" alt="კურაციო"><span>© 2026 სს კურაციო</span><a class="up mt" href="#">ზემოთ <i class="ph-bold ph-arrow-up"></i></a></div>
+</div></footer>
+<nav class="mbar mt"><a href="tel:+995322430101"><i class="ph-bold ph-phone"></i>დარეკვა</a><a href="#"><i class="ph-bold ph-calendar-plus"></i>ჩაწერა</a></nav>
+<script src="base.js"></script>
+<script>
+// stage: cycles through four directions until someone picks one; ?f=3 opens on a given one
+const st = document.querySelector('.stage'), bs = [...st.querySelectorAll('.dock button')];
+let n = 1;
+const go = i => { n = i; st.dataset.f = i; bs.forEach((b, k) => b.setAttribute('aria-pressed', k == i - 1)); };
+const stop = () => { clearInterval(t); st.classList.remove('auto'); };
+let t = setInterval(() => go(n % 4 + 1), 4600);
+bs.forEach((b, k) => b.onclick = () => { stop(); go(k + 1); });
+const f = new URLSearchParams(location.search).get('f');
+if (f) { stop(); go(+f); }
+
+// live doctor filter: specialty chip and name search combine
+const cards = [...document.querySelectorAll('#grid .dc')], q = document.getElementById('q'),
+      chips = [...document.querySelectorAll('#fil button')], cnt = document.getElementById('cnt'), none = document.getElementById('none');
+let spec = '';
+const run = () => { const s = q.value.trim(); let c = 0;
+  cards.forEach(d => { const ok = (!spec || d.dataset.s == spec) && d.dataset.n.includes(s); d.hidden = !ok; c += ok; });
+  cnt.textContent = c + ' ექიმი'; none.style.display = c ? 'none' : 'block'; };
+chips.forEach(b => b.onclick = () => { spec = b.dataset.s; chips.forEach(x => x.setAttribute('aria-pressed', x == b)); run(); });
+q.oninput = run; run();
+</script>
+</body>
+</html>
